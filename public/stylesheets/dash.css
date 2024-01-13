@@ -1,0 +1,11 @@
+.nav{
+    margin-left: 20px;
+    /* text-align: center; */
+}
+
+a{
+    text-align: center;
+    background-color: teal;
+    border-radius: 5px;
+    margin-top: 40px;
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/stylesheets/mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/javascripts/product.js"></script>
+
+    <title>PRODUCT DATA</title>
+</head>
+
+<body>
+    <% if(status==false) {%>
+        <h2>
+            <%=data %>
+        </h2>
+        <% } else { %>
+            <div class="tableContainer">
+                <div class="tableBox">
+                    <table class="striped">
+                        <div class="heading">
+                            <div class="headingtxt">
+                                LIST OF PRODUCT
+                            </div>
+                        </div>
+                        <thead>
+                            <tr>
+                                <th>Product Id</th>
+                                <th>Category</th>
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Rating</th>
+                                <th>Status</th>
+                                <th>Picture</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.map((item)=>{%>
+
+                                <tr>
+                                    <td>
+                                        <%=item.productid %>
+                                    </td>
+                                    <td>
+                                        <%=item.categoryname %><br>
+                                            <%=item.subcategoryname %>
+                                    </td>
+                                    <td>
+                                        <%=item.productname %><br>
+                                            <%=item.brandname%>
+                                    </td>
+                                    <td>
+                                        <%=item.description %>
+                                    </td>
+                                    <td>
+                                        <%if(item.offerprice>0) {%>
+                                            <div style="color:crimson"><s>
+                                                    <%=item.price %><br>
+                                                </s></div>
+                                            <div style="color: aquamarine;font-weight: bolder;">
+                                                <%=item.offerprice %><br>
+                                            </div>
+                                            <%} else{ %>
+                                                <div style="color:aquamarine;font-weight: bolder;">
+                                                    <%=item.price %>
+                                                </div><br>
+                                                <%} %>
+                                                    Stock:<%=item.stock %>
+                                    </td>
+                                    <td>
+                                        <%=item.ratings %>
+                                    </td>
+                                    <td>
+                                        <%=item.status %>
+                                    </td>
+                                    <td><img src='/images/<%=item.picture %>'
+                                            style="border-radius:20px; height: 100px; width:140px"></td>
+                                    <td>
+                                        <input type="button" products="<%=JSON.stringify(item)%>" value="Edit" class="btnedit">
+                                    </td>
+
+                                </tr>
+
+
+                                <%})%>
+
+
+                        </tbody>
+                    </table>
+
+                    <!-- Modal Trigger -->
+
+                    <!-- Modal Structure -->
+                    <div id="product" class="modal"style="width: 70%;">
+                        <div class="modal-content" >
+                            <div class="heading">
+                                <div class="headingtxt">
+                                    Product Interface
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">next_week</i>
+                                    <select name="categoryid" id="categoryid">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <!-- <option value="continue">Continue</option>
+                            <option value="discontinue">Discontinue</option> -->
+                                    </select>
+                                    <label>Category</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">grid_on</i>
+                                    <select name="subcategoryid" id="subcategoryid">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <!-- <option value="continue">Continue</option>
+                            <option value="discontinue">Discontinue</option> -->
+                                    </select>
+                                    <label>Subcategory</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">new_releases</i>
+                                    <select name="brandid" id="brandid">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <!-- <option value="continue">Continue</option>
+                            <option value="discontinue">Discontinue</option> -->
+                                    </select>
+                                    <label>Brand</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">shopping_cart</i>
+                                    <input id="productname" name="productname" type="text" class="validate">
+                                    <label for="productname">Product Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">description</i>
+                                    <input id="description" name="description" type="text" class="validate">
+                                    <label for="description">Description</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <i class="material-icons prefix">attach_money</i>
+                                    <input id="price" name="price" type="text" class="validate">
+                                    <label for="price">Price</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <i class="material-icons prefix">money_off</i>
+                                    <input id="offerprice" name="offerprice" type="text" class="validate">
+                                    <label for="offerprice">Offer</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <i class="material-icons prefix">add_shopping_cart</i>
+                                    <input id="stock" name="stock" type="text" class="validate">
+                                    <label for="stock">Stock</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">star</i>
+                                    <input id="ratings" name="ratings" type="text" class="validate">
+                                    <label for="ratings">Ratings</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">edit_location</i>
+                                    <select id="status" name="status">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="continue">Continue</option>
+                                        <option value="discontinue">Discontinue</option>
+                                    </select>
+                                    <label>Status</label>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span><i class="material-icons">attach_file</i></span>
+                                        <input type="file" name="picture">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col s6 aligncenter">
+                                    <button class="btn waves-effect waves-light" type="submit" id="updbtn">Update
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                                <div class="col s6 aligncenter">
+                                    <button class="btn waves-effect waves-light" type="reset" id="delbtn">Delete
+                                        <i class="material-icons right">delete</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="modal-footer">
+                            <a href="#" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <%} %>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" ></script>
+<script>
+    $(document).ready(function(){
+            $('.modal').modal();
+          $('.btnedit').click(function(){
+
+            $('#product').modal('open')
+            var item= JSON.parse($(this).attr('products'))
+            $('#categoryid').val(item.categoryid)
+
+            fillsubcategory(item.categoryid,item.subcategoryid)
+            fillbrand(item.categoryid,item.brandid)
+            $('#productname').val(item.productname)
+            $('#description').val(item.description)
+            $('#price').val(item.price)
+            $('#offerprice').val(item.offerprice)
+            $('#stock').val(item.stock)
+            $('#ratings').val(item.ratings)
+            $('#status').val(item.status)
+            
+            $('#status').formSelect()
+            $('#categoryid').formSelect()
+            M.updateTextFields();                       //for avoiding label overlapping
+          });
+        });
+       $('#updbtn').click(function(){
+       $.getJSON('/product/editproduct',{categoryid:$('#categoryid').val(),
+       subcategoryid:$('#subcategoryid').val(),brandid:$('#brandid').val(),
+       productname:$('#productname').val(),description:$('#description').val(),
+       price:$('#price').val(),offerprice:$('#offerprice').val(),stock:$('#stock').val(),
+       ratings:$('#ratings').val(),status:$('#status').val(),productid:$('#productid').val()
+      },function(data){
+        alert(data.message)
+        window.location.reload('/product/display_all_product')
+
+       })   
+            
+      });
+
+      $('#delbtn').click(function(){
+       $.getJSON('/product/deleteproductdata',{productid:$('#productid').val()
+      },function(data){
+        alert(data.message)
+        window.location.reload('/product/display_all_product')
+
+       })   
+
+          });
+
+</script>
+</html>

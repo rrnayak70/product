@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/stylesheets/dash.css">
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="/javascripts/dash.js"></script>
+
+  <title>Dash Board</title>
+</head>
+
+<body>
+
+  <!-- sidenav bar -->
+  <div class="nav">
+
+    <ul id="mysidenav" class="sidenav " style="transform: translateX(-105%);">
+      <li class="search">
+        <div class="search-wrapper input-field">
+          <input id="search" placeholder="Search">
+          <i class="material-icons">search</i></input>
+          <div class="search-result"></div>
+        </div>
+      </li>
+      <li> <a class="waves-effect" href="#!">Home</a></li>
+      <li> <a class="waves-effect" href="#!">Home</a></li>
+      <li> <a class="waves-effect" href="#!">Home</a></li>
+      <!-- <div class="footer">
+        <li> <a class="waves-effect" href="#!">Home</a></li>
+      </div> -->
+    </ul>
+  </div>
+
+
+  <div class="maincontainer" style="width: 70vw; align-items: flex-start; display: flex;">
+    <div class="col offset-s8 s4">
+      <!-- header -->
+      <header id="page-topbar" id="header">
+        <div class="navbar-fixed navbar">
+          <nav>
+            <div class="nav-wrapper">
+              <div class="header-search-wrapper hide-on-med-and-down">
+                <button href="#" data-target="mysidenav" class="btn transparent sidenav-trigger"><i
+                    class="material-icons">menu</i></button>
+                <i class="material-icons">search</i>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+
+
+      <!-- cards -->
+      <div id="card-stats" class="pt-0">
+        <div class="row">
+          <div class="col s12 m6 13">
+            <div class="card animate fadeLeft">
+              <div class="card-content cyan white-text ">
+                <p class="card-stats-title">
+                  <i class="material-icons">person</i>
+                  Heading
+                </p>
+                <h4 class="card-stats-number white-text">556</h4>
+                <p class="card-stats-compare">
+                  <i class="material-icons">keyboard_arrow_up</i>
+                  15
+                  <span class="cyan text text-lighten-5">from yesterday</span>
+                </p>
+              </div>
+              <div class="card-action cyan darken-1">
+                <div class="center-align" id="clients-bar">
+                  <canvas style="display: inline-block; width: 227px; height: 25px; vertical-align: top;" width="227"
+                    height="25"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6 13">
+            <div class="card animate fadeLeft">
+              <div class="card-content red white-text ">
+                <p class="card-stats-title">
+                  <i class="material-icons">person</i>
+                  Heading
+                </p>
+                <h4 class="card-stats-number white-text">556</h4>
+                <p class="card-stats-compare">
+                  <i class="material-icons">keyboard_arrow_up</i>
+                  15
+                  <span class="red text text-lighten-5">from yesterday</span>
+                </p>
+              </div>
+              <div class="card-action red darken-1">
+                <div class="center-align" id="clients-bar">
+                  <canvas style="display: inline-block; width: 227px; height: 25px; vertical-align: top;" width="227"
+                    height="25"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6 13">
+            <div class="card animate fadeRight">
+              <div class="card-content orange lighten-1 white-text ">
+                <p class="card-stats-title">
+                  <i class="material-icons">person</i>
+                  Heading
+                </p>
+                <h4 class="card-stats-number white-text">556</h4>
+                <p class="card-stats-compare">
+                  <i class="material-icons">keyboard_arrow_up</i>
+                  15
+                  <span class="orange-text text-lighten-5">from yesterday</span>
+                </p>
+              </div>
+              <div class="card-action orange">
+                <div class="center-align" id="profit-tristate">
+                  <canvas style="display: inline-block; width: 227px; height: 25px; vertical-align: top;" width="227"
+                    height="25"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6 13">
+            <div class="card animate fadeRight">
+              <div class="card-content green lighten-1 white-text ">
+                <p class="card-stats-title">
+                  <i class="material-icons">person</i>
+                  Heading
+                </p>
+                <h4 class="card-stats-number white-text">556</h4>
+                <p class="card-stats-compare">
+                  <i class="material-icons">keyboard_arrow_up</i>
+                  15
+                  <span class="green-text text-lighten-5">from yesterday</span>
+                </p>
+              </div>
+              <div class="card-action green">
+                <div class="center-align" id="invoice-line">
+                  <canvas style="display: inline-block; width: 251.175px; height: 25px; vertical-align: top;" width="251"
+                    height="25"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
