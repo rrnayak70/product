@@ -88,7 +88,7 @@ router.post('/submitproduct',upload.any(), function(req, res, next) {
 
 //display database or sending data 
 router.get('/display_all_product',function(req,res,next){
-  pool.query("select P.*,(select C.categoryname from category C where C.categoryid=P.categoryid) as categoryname,(select S.subcategoryname from subcategory S where S.subcategoryid=P.subcategoryid) as subcategoryname,(select B.brandname from brand B where B.brandid=P.brandid) as brandname from products P",function(error,result){
+  pool.query("select P.*,(select C.categoryname from category C where C.categoryid=P.categoryid) as categoryname,(select S.subcategoryname from subcategory S where S.subcategoryid=P.subcategoryid) as subcategoryname,(select B.brandname from brands B where B.brandid=P.brandid) as brandname from products P",function(error,result){
     if (error) {
       console.log('Error:',error)
       res.render('displaydatabase',{status:false,data:'Server error'})
